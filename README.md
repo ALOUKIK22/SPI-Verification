@@ -1,3 +1,5 @@
+<img width="1500" height="495" alt="SPI MODES" src="https://github.com/user-attachments/assets/cfed1a54-7536-4b90-b91f-211148095a9b" />
+<img width="1365" height="572" alt="SPI" src="https://github.com/user-attachments/assets/8a276f9c-80ff-4d02-a995-9eba4e024e01" />
 # SPI-Verification
 Designed an complete SPI system from scratch, consisting of its RTL and Testbench , consisting of Self-Checking testbench with 3 test cases.
 SPI Master Design (Verilog)
