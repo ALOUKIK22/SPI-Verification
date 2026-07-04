@@ -1,0 +1,79 @@
+`include "interface.sv"
+`include "transaction.sv"
+`include "generator.sv"
+`include "driver.sv"
+`include "monitor.sv"
+`include "scoreboard.sv"
+`include "env.sv"
+`include "test.sv"
+
+module tb_top;
+
+    intf intf1();
+
+    SPI dut (
+
+        .clk      (intf1.clk),
+        .rst      (intf1.rst),
+        .start    (intf1.start),
+
+        .tx_data  (intf1.tx_data),
+        .miso     (intf1.miso),
+
+        .spi_cs_l (intf1.spi_cs_l),
+        .spi_sclk (intf1.spi_sclk),
+        .spi_data (intf1.spi_data),
+
+        .rx_data  (intf1.rx_data)
+
+    );
+    test t1(intf1);
+
+    
+    // Clock Generation
+    
+    initial
+    begin
+
+        intf1.clk = 0;
+
+        forever #5
+            intf1.clk = ~intf1.clk;
+
+    end
+    // Reset 
+    initial
+    begin
+
+        intf1.rst = 1'b1;
+
+        intf1.start = 1'b0;
+
+        intf1.tx_data = 8'h00;
+
+        intf1.miso = 1'b0;
+
+        #20;
+
+        intf1.rst = 1'b0;
+
+    end
+
+   
+    // Simulation end 
+    
+
+    initial
+    begin
+
+        #5000;
+
+        $display("----------------------------------");
+        $display("Simulation Finished");
+        $display("----------------------------------");
+
+        $finish;
+
+    end
+
+endmodule
